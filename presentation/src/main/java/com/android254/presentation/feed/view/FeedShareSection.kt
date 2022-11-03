@@ -34,6 +34,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -63,6 +64,7 @@ fun FeedShareSection() {
         ) {
             TextButton(
                 onClick = {
+
                 }
             ) {
                 Text(
@@ -114,7 +116,10 @@ fun FeedShareSection() {
 @Composable
 fun PlatformButton(platform: String, icon: Int) {
     OutlinedButton(
-        onClick = { /*TODO*/ },
+        onClick = {
+                  //function to share the feed via the platform
+                //  shareFeedVia(platform,  content)
+                  },
         shape = MaterialTheme.shapes.small,
         modifier = Modifier
             .fillMaxWidth()
@@ -142,7 +147,7 @@ fun PlatformButton(platform: String, icon: Int) {
 @Composable
 fun PlatformButtonPreview() {
     DroidconKE2022Theme {
-        PlatformButton("Twitter", R.drawable.ic_whatsapp)
+        PlatformButton("Whatsapp", R.drawable.ic_whatsapp)
     }
 }
 
