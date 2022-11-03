@@ -15,6 +15,8 @@
  */
 package com.android254.presentation.feed.view
 
+import android.content.Intent
+import android.content.Intent.createChooser
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -44,6 +46,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.android254.presentation.R
 import com.android254.presentation.common.theme.DroidconKE2022Theme
+import com.android254.presentation.models.FeedData
 import com.droidconke.chai.atoms.ChaiSmokeyGrey
 import com.droidconke.chai.atoms.ChaiTeal
 import com.droidconke.chai.atoms.type.MontserratBold
@@ -64,6 +67,7 @@ fun FeedShareSection() {
         ) {
             TextButton(
                 onClick = {
+
 
                 }
             ) {
@@ -117,8 +121,8 @@ fun FeedShareSection() {
 fun PlatformButton(platform: String, icon: Int) {
     OutlinedButton(
         onClick = {
-                  //function to share the feed via the platform
-                //  shareFeedVia(platform,  content)
+                  //function to share the feed via the [platform]
+//                 shareFeedVia(platform, data)
                   },
         shape = MaterialTheme.shapes.small,
         modifier = Modifier
@@ -142,6 +146,20 @@ fun PlatformButton(platform: String, icon: Int) {
         )
     }
 }
+
+//fun shareFeedVia(platform: String, data: FeedData) {
+//
+//    //intent resolver
+//    val sendIntent: Intent = Intent().apply {
+//        action = Intent.ACTION_SEND
+//        putExtra(Intent.EXTRA_TEXT, data.text)
+//        put
+//        type="text/plain"
+//
+//    }
+//
+//
+//}
 
 @Preview(showBackground = true)
 @Composable

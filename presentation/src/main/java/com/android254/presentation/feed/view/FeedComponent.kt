@@ -101,7 +101,7 @@ fun FeedComponent(modifier: Modifier, onClickItem: (Int) -> Unit) {
 
                 TextButton(
                     onClick = {
-                        onClickItem(1)
+
                     },
                     modifier = Modifier.testTag("share_button"),
                 ) {
