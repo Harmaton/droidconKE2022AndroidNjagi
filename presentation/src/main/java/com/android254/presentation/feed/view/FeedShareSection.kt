@@ -121,8 +121,8 @@ fun FeedShareSection() {
 fun PlatformButton(platform: String, icon: Int) {
     OutlinedButton(
         onClick = {
-                  //function to share the feed via the [platform]
-//                 shareFeedVia(platform, data)
+                  //1.  shareFeed data Via (platform, data)
+
                   },
         shape = MaterialTheme.shapes.small,
         modifier = Modifier
@@ -147,19 +147,6 @@ fun PlatformButton(platform: String, icon: Int) {
     }
 }
 
-//fun shareFeedVia(platform: String, data: FeedData) {
-//
-//    //intent resolver
-//    val sendIntent: Intent = Intent().apply {
-//        action = Intent.ACTION_SEND
-//        putExtra(Intent.EXTRA_TEXT, data.text)
-//        put
-//        type="text/plain"
-//
-//    }
-//
-//
-//}
 
 @Preview(showBackground = true)
 @Composable

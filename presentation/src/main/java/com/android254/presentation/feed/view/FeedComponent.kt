@@ -15,6 +15,7 @@
  */
 package com.android254.presentation.feed.view
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -101,6 +102,10 @@ fun FeedComponent(modifier: Modifier, onClickItem: (Int) -> Unit) {
 
                 TextButton(
                     onClick = {
+                     //1. implement the implicit intent
+
+
+                              //2. open up the FeedshareSection
 
                     },
                     modifier = Modifier.testTag("share_button"),
@@ -133,6 +138,7 @@ fun FeedComponent(modifier: Modifier, onClickItem: (Int) -> Unit) {
         }
     }
 }
+
 
 @Preview
 @Composable
