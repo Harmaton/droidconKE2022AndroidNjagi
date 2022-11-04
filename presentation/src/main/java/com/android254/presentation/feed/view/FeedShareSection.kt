@@ -15,8 +15,7 @@
  */
 package com.android254.presentation.feed.view
 
-import android.content.Intent
-import android.content.Intent.createChooser
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -33,10 +32,10 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -45,14 +44,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.android254.presentation.R
+import com.android254.presentation.common.bottomsheet.rememberBottomSheetScaffoldState
 import com.android254.presentation.common.theme.DroidconKE2022Theme
-import com.android254.presentation.models.FeedData
 import com.droidconke.chai.atoms.ChaiSmokeyGrey
 import com.droidconke.chai.atoms.ChaiTeal
 import com.droidconke.chai.atoms.type.MontserratBold
+import kotlinx.coroutines.launch
 
 @Composable
 fun FeedShareSection() {
+
+    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState()
+    val scope = rememberCoroutineScope()
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -65,12 +69,7 @@ fun FeedShareSection() {
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            TextButton(
-                onClick = {
 
-
-                }
-            ) {
                 Text(
                     text = stringResource(id = R.string.share),
                     color = Color.Black,
@@ -86,15 +85,23 @@ fun FeedShareSection() {
                     modifier = Modifier.padding(start = 8.dp),
                     tint = Color.Black
                 )
+
+
+            TextButton(onClick = {
+                scope.launch {
+                        bottomSheetScaffoldState.bottomSheetState.collapse()
+                }
+
+            }) {
+                Text(
+                    text = stringResource(id = R.string.cancel).uppercase(),
+                    color = ChaiSmokeyGrey,
+                    fontSize = MaterialTheme.typography.labelLarge.fontSize,
+                    fontWeight = MaterialTheme.typography.labelLarge.fontWeight,
+                    fontStyle = MaterialTheme.typography.labelLarge.fontStyle
+                )
             }
 
-            Text(
-                text = stringResource(id = R.string.cancel).uppercase(),
-                color = ChaiSmokeyGrey,
-                fontSize = MaterialTheme.typography.labelLarge.fontSize,
-                fontWeight = MaterialTheme.typography.labelLarge.fontWeight,
-                fontStyle = MaterialTheme.typography.labelLarge.fontStyle
-            )
         }
 
         val platforms = mapOf(
@@ -121,8 +128,8 @@ fun FeedShareSection() {
 fun PlatformButton(platform: String, icon: Int) {
     OutlinedButton(
         onClick = {
-                  //1.  shareFeed data Via (platform, data)
-
+                  //1.  shareFeed data Via the (platform)
+              //if (platform[0]){share intent to twitter}
                   },
         shape = MaterialTheme.shapes.small,
         modifier = Modifier
@@ -146,7 +153,6 @@ fun PlatformButton(platform: String, icon: Int) {
         )
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

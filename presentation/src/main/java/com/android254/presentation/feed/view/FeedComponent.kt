@@ -34,6 +34,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -47,14 +48,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.android254.presentation.R
+import com.android254.presentation.common.bottomsheet.rememberBottomSheetScaffoldState
 import com.android254.presentation.common.theme.DroidconKE2022Theme
 import com.droidconke.chai.atoms.ChaiBlue
 import com.droidconke.chai.atoms.ChaiLightGrey
 import com.droidconke.chai.atoms.ChaiSmokeyGrey
 import com.droidconke.chai.atoms.type.MontserratBold
+import kotlinx.coroutines.launch
 
 @Composable
 fun FeedComponent(modifier: Modifier, onClickItem: (Int) -> Unit) {
+
+    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState()
+    val scope = rememberCoroutineScope()
 
     Card(
         modifier = modifier
@@ -102,10 +108,11 @@ fun FeedComponent(modifier: Modifier, onClickItem: (Int) -> Unit) {
 
                 TextButton(
                     onClick = {
-                     //1. implement the implicit intent
-
 
                               //2. open up the FeedshareSection
+                              scope.launch {
+                                      bottomSheetScaffoldState.bottomSheetState.expand()
+                              }
 
                     },
                     modifier = Modifier.testTag("share_button"),
